@@ -11,3 +11,11 @@
   fail:
     msg: Need golang, you can use https://github.com/ElaoInfra/ansible-role-apt to install it.
   when: _elao_go_check_output.stdout is not defined
+
+- name: requirements > Pygments
+  pip:
+    name:  "{{ item }}"
+    state: present
+  when: elao_hugo_pygments
+  with_items:
+    - Pygments
